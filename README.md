@@ -6,5 +6,5 @@ The analysis is based on data from IGN (Instituto Geografico Nacional) of Spain.
 
 https://www.ign.es/web/ign/portal/sis-catalogo-terremotos
 
-To avoid clogging the base and also overloading IGN's server, a box around La Palma island is choosen, with a time interval of a few weeks before today. Presently, CSV format is choosen for download.
+To avoid clogging the base and also overloading IGN's server, a box around La Palma island is choosen, with a time interval of a few weeks before today. Presently, CSV is the format choosen for download. GeoJSON will be implemented later.
 
