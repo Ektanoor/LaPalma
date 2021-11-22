@@ -67,6 +67,7 @@ for filename in files:
             if 'AUT ' in l or 'MAN' in l:
                 oth=0
                 if '.' in l:
+                    if '.TF' not in l: continue
                     loc=re.split(r'\.',l)
                     province=loc[1]
                     l=loc[0]
@@ -85,9 +86,7 @@ for filename in files:
                 location=' '.join(row[2:])
                 cur.execute(f"INSERT INTO intensity_maps (event,min,max,location,province,checking) VALUES ('{event}',{int_min},{int_max},'{location}','{province}','{checking}') ON CONFLICT DO NOTHING")
                 conn.commit()
-                print(location)
                 coors=nom.geocode(location,exactly_one=True,addressdetails=False)
-                print(coors)
                 if not coors: continue
                 cur.execute(f"INSERT INTO intensity_coors (event,coors,min,max) VALUES ('{event}',ST_GeographyFromText('SRID=4326;POINT({coors.longitude} {coors.latitude})'),{int_min},{int_max}) ON CONFLICT DO NOTHING")
                 conn.commit()
